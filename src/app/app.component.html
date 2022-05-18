@@ -1,0 +1,33 @@
+<div style="margin-top: 50px;">
+  <div class="container card card-body">
+    <section>
+      <div class="text-center mt-5">
+        <h1>Teste bucket upload</h1>
+      </div>
+      <div class="custom-file">
+        <input type="file" (change)="SaveObject($event.target)" class="custom-file-input" id="customFile">
+        <label class="custom-file-label" for="customFile">Selecione um arquivo</label>
+      </div>
+    </section>
+    <section class="mt-5">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">key</th>
+            <th scope="col">date</th>
+            <th>link</th>
+            <th scope="col">Opções</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of list.Contents">
+            <td>{{item.Key}}</td>
+            <td>{{item.LastModified | date:'dd/MM/yyyy'}} as {{item.LastModified | date:'HH:mm'}}</td>
+            <td><a [href]="GetLink(item.Key)" target="_blank">Abrir ou baixar arquivo</a></td>
+            <td><button class="btn btn-sm btn-danger" (click)="DeleteObject(item.Key)">Deletar</button></td>          
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+</div>
